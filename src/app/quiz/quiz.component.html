@@ -1,0 +1,29 @@
+<form class="quiz-form" [formGroup]="quizForm">
+    <div class="form-group">
+        <p>{{ question.question }}</p>  
+        <div class="form-check">
+            <input class="form-check-input" type="radio" formControlName="answer"  id="answer_1" value="True">
+            <label class="form-check-label" for="answer_1">
+                True
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" formControlName="answer" id="answer_2" value="False">
+            <label class="form-check-label" for="answer_2">
+                False
+            </label>
+        </div>
+        <button class="btn btn-primary" 
+            (click)="submit()" 
+            *ngIf="isLastQuestion"
+            [disabled]="!isAnswered"
+        >Submit
+        </button>
+        <button class="btn btn-secondary" 
+            (click)="next()" 
+            *ngIf="!isLastQuestion" 
+            [disabled]="!isAnswered"
+        >Next
+        </button>
+    </div>
+</form>
